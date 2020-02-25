@@ -1,0 +1,110 @@
+<style>
+
+    ul#menu-v, #menu-v ul
+    {
+        width:260px; /* Main Menu width */
+        border:1px solid rgba(190,190,190,0.3);
+        list-style:none; margin:0; padding:0;
+        z-index:9;
+    }
+
+    #menu-v li
+    {
+        margin:0;padding:0;
+        position:relative;
+        background-color:#FE980F; /*fallback color*/
+
+        transition:background 0.5s;
+    }
+    #menu-v li:hover
+    {
+        background-color:rgba(0,0,0,0.9);
+    }
+
+    #menu-v a
+    {
+        font:normal 12px Arial;
+        border-top:1px solid rgba(190,190,190,0.3);
+        display:block;
+        color:rgba(0,0,0,0.9);
+        text-decoration:none;
+        line-height:30px;
+        padding-left:22px;
+        position:relative;
+    }
+
+    #menu-v li:first-child a
+    {
+        border-top:0;
+    }
+
+    #menu-v a.arrow::after{
+        content:'';
+        position:absolute;
+        display:inline;
+        top:50%;
+        margin-top:-4px;
+        right:8px;
+        border-width:4px;
+        border-style:solid;
+        border-color:transparent transparent transparent white;
+        transition:border-color 0.5s;
+    }
+
+    #menu-v li a.arrow:hover::after
+    {
+        border-color:transparent transparent transparent #CCCCCC;
+    }
+
+    /*Sub level menu items
+    ---------------------------------------*/
+    #menu-v li ul
+    {
+        min-width:180px; /* Sub level menu min width */
+        position:absolute;
+        display:none;
+        left:100%;
+        top:50%; transform:translateY(-50%);
+    }
+
+    #menu-v li:hover > ul
+    {
+        display:block;
+    }
+
+
+</style>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="left-sidebar">
+                    <h2>Category</h2>
+                    <div class="panel panel-default">
+                        <div class="brands_products"><!--brands_products-->
+                            <div class="brands-name" data-color="black">
+
+                                <ul class="nav nav-pills nav-stacked" >
+                                    {% for cat in cats %}
+                                        {{ cat | raw}}
+
+                                    {% endfor %}
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                        <!--/brands_products-->
+
+                        <div class="price-range"><!--price-range-->
+                            <h2>Price Range</h2>
+                            <div class="well text-center">
+                                <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2" ><br />
+                                <b class="pull-left">$ 0</b> <b class="pull-right">$ 600</b>
+                            </div>
+                        </div><!--/price-range-->
+
+                    </div>
+                </div>
+
+

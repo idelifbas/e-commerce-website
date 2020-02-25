@@ -1,0 +1,65 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Mesaj Listesi{% endblock %}
+
+{% block content %}
+
+    <div class="content">
+        <div class="col-sm-9 col-sm-offset-3 col-lg-12 col-lg-offset-0 main">
+            <div class="col-lg-12">
+                <br><h4>
+                    <strong class="">Üye meajları</strong>
+                    <small><a href="{{ path('admin_messages_new') }}" class="btn btn-info btn-fill pull-right">Mesaj ekleme</a> </small>
+                </h4>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-body">
+
+
+                            <div class="col-md-12">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Subject</th>
+                                        <th>Message</th>
+                                        <th>Comment</th>
+                                        <th>Status</th>
+                                        <th>actions</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for message in messages %}
+                                        <tr>
+                                            <td>{{ message.id }}</td>
+                                            <td>{{ message.name }}</td>
+                                            <td>{{ message.email }}</td>
+                                            <td>{{ message.subject }}</td>
+                                            <td>{{ message.message }}</td>
+                                            <td>{{ message.comment }}</td>
+                                            <td>{{ message.status }}</td>
+                                            <td>
+                                                <a href="javascript:openWin(' {{ path ('admin_messages_show',{'id': message.id}) }}','','toolbar=no, location=no,status=no,top=100,left=200, menuBar=no,scrollBars=no,resizable=no, width=700,height=600');  " class="btn btn-sm btn-info">Göster</a>
+
+                                            </td>
+                                        </tr>
+                                    {% else %}
+                                        <tr>
+                                            <td colspan="8">no records found</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

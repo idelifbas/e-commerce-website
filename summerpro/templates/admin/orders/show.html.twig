@@ -1,0 +1,124 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Mesaj Detayları{% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="col-sm-9 col-sm-offset-3 col-lg-12 col-lg-offset-0 main">
+        <div class="col-lg-12">
+            <br><h4>
+                <strong class="">Mesaj Detayları</strong>
+                <small><a href="{{ path('admin_messages_new') }}" class="btn btn-info btn-fill pull-right">Mesaj ekleme</a> </small>
+            </h4>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-body">
+
+
+                        <div class="col-md-12">
+                            <table class="table">
+                            <thead>
+                            <tbody>
+
+                            <tr>
+                                <th>Id</th>
+                                <td>{{ orders.id }}</td>
+                            </tr>
+
+                            <tr>
+                                <th>Userid</th>
+                                <td>{{ orders.userid }}</td>
+                            </tr>
+                            <tr>
+                                <th>Amount</th>
+                                <td>{{ orders.amount }}</td>
+                            </tr>
+                            <tr>
+                                <th>Name</th>
+                                <td>{{ orders.name }}</td>
+                            </tr>
+                            <tr>
+                                <th>Address</th>
+                                <td>{{ orders.address }}</td>
+                            </tr>
+                            <tr>
+                                <th>City</th>
+                                <td>{{ orders.city }}</td>
+                            </tr>
+                            <tr>
+                                <th>Phone</th>
+                                <td>{{ orders.phone }}</td>
+                            </tr>
+
+
+                            <form action="{{ path('admin_orders_update',{'id':orders.id}) }}" method="post">
+                                <tr>
+                                    <th>Shipinfo</th>
+                                    <td><textarea name="shipinfo" cols="100" rows="3"> {{ orders.shipinfo }} </textarea> </td>
+                                </tr>
+                                <tr>
+                                    <th>Note</th>
+                                    <td><textarea name="note" cols="100" rows="3"> {{ orders.note }} </textarea> </td>
+                                </tr>
+                                <tr>
+                                    <th>Status</th>
+                                    <td><select name="status">
+                                            <option>{{ orders.status }} </option>
+                                            <option>Accepted </option>
+                                            <option>Inshipping </option>
+                                            <option>Cancelled </option>
+                                        </select>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><input type="submit" value="Güncelle"></td>
+                                </tr>
+                            </form>
+                            </tbody>
+                        </table>
+                        <table class="table">
+                            <thead>
+                            <tbody>
+                            <tr>
+                                <th>Id</th>
+                                <th>Ürün Adı</th>
+                                <th>Satış Fiyatı</th>
+                                <th>Adet</th>
+                                <th>Toplam</th>
+                                <th>Durum</th>
+                            </tr>
+                            </thead>
+                            {% set total=0%}
+                            {% for rs in orderdetail %}
+                                <tr>
+                                    <td> {{ rs.id }}</td>
+                                    <td> {{ rs.name }}</td>
+                                    <td> {{ rs.price }}</td>
+                                    <td> {{ rs.quantity }}</td>
+                                    <td> {{ rs.amount }}</td>
+                                    <td> {{ rs.status }}</td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="6">Sipariş Detay</td>
+                                </tr>
+                            {% endfor %}
+
+                            <tr>
+                                <td colspan="6">
+                                    Toplam Alışveriş Tutarı: {{ orders.amount }} ₺
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% endblock %}
+

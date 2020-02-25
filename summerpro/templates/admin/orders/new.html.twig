@@ -1,0 +1,27 @@
+
+{% extends 'frontbase.html.twig' %}
+
+{% block title %} Order Items {% endblock %}
+{% block sidebar %}   {{ include ('home/_usersidebar.html.twig') }}  {% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="col-sm-9 col-sm-offset-0 col-lg-8 col-lg-offset-0 main">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong class="">  Order Items  </strong>
+                    </div>
+                    <div class="panel-body">
+                        {{ include('orders/_form.html.twig') }}
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

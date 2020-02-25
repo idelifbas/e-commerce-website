@@ -1,0 +1,59 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %} Login - {{ data[0].title }} {% endblock %}
+{% block keywords %} {{ data[0].keywords }} {% endblock %}
+{% block description %} {{ data[0].description }} {% endblock %}
+
+
+{% block sidebar %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {{ include ('home/_usersidebar.html.twig') }}
+    {% endif %}
+
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-8 ">
+            <div class="col-sm-2 col-sm-offset-2 col-lg-6 col-lg-offset-2 main ">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+                            Kullanıcı Adı : {{ app.user.name }}
+                            <hr>
+                            Kullanıcı Email : {{ app.user.email }}
+
+
+                        {% else %}
+                            {{ include('admin/messages.html.twig') }}
+                            <form method="post">
+                                {% if error %}
+                                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                                {% endif %}
+
+
+                                <div class="col-sm-5 col-sm-offset-1">
+                                    <div class="login-form"><!--login form-->
+                                        <h2><i>Kullanıcı Girişi</i></h2>
+                                        <input type="email" value="{{ last_username }}" name="email" class="form-control" placeholder="Email" required autofocus>
+                                        <br>
+                                        <input type="password" name="password" class="form-control" placeholder="Password" required>
+                                        <br>
+
+                                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                                        <button type="submit" class="btn btn-default">Giriş</button>
+                                    </div><!--/login form-->
+                                </div>
+
+
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

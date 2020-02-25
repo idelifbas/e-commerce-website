@@ -1,0 +1,32 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Kategori Düzenleme{% endblock %}
+
+{% block content %}
+
+    <div class="content">
+        <div class="col-sm-9 col-sm-offset-3 col-lg-12 col-lg-offset-0 main">
+            <div class="col-lg-12">
+                <br><h4>
+                    <strong class="">Düzenle</strong>
+
+                </h4>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-body">
+
+
+                            <div class="col-md-12">
+
+                                {{ include('admin/product/_form.html.twig') }}
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

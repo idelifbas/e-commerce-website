@@ -1,0 +1,61 @@
+{% extends 'frontbase.html.twig' %}
+{% block sidebar %}   {{ include ('home/_usersidebar.html.twig') }}  {% endblock %}
+{% block title %}Orders list{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8">
+        <div class="col-sm-10 col-sm-offset-0 col-lg-12 col-lg-offset-0 main">
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+                    <h1>Siparişlerin Listesi</h1>
+
+                    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Orderid</th>
+                <th>Userid</th>
+                <th>Productid</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Amount</th>
+                <th>Name</th>
+                <th>Status</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for order_detail in order_details %}
+            <tr>
+                <td>{{ order_detail.id }}</td>
+                <td>{{ order_detail.orderid }}</td>
+                <td>{{ order_detail.userid }}</td>
+                <td>{{ order_detail.productid }}</td>
+                <td>{{ order_detail.price }}</td>
+                <td>{{ order_detail.quantity }}</td>
+                <td>{{ order_detail.amount }}</td>
+                <td>{{ order_detail.name }}</td>
+                <td>{{ order_detail.status }}</td>
+                <td>
+                    <a href="{{ path('order_detail_show', {'id': order_detail.id}) }}">show</a>
+                    <a href="{{ path('order_detail_edit', {'id': order_detail.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+                    </table>
+
+                    <a href="{{ path('order_detail_new') }}">Create new</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

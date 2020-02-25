@@ -1,0 +1,57 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Üye Listesi{% endblock %}
+
+{% block content %}
+
+    <div class="content">
+        <div class="col-sm-9 col-sm-offset-3 col-lg-12 col-lg-offset-0 main">
+            <div class="col-lg-12">
+                <br><h4>
+                    <strong class="">Üye Listesi</strong>
+                    <small><a href="{{ path('admin_user_new') }}" class="btn btn-info btn-fill pull-right">Üye ekleme</a> </small>
+                </h4>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-body">
+
+
+                            <div class="col-md-12">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Adı Soyadı</th>
+                                        <th>Email</th>
+                                        <th>Durum</th>
+                                        <th>Rolü</th>
+                                        <th>Düzenle</th>
+                                        <th>Sil</th>
+
+                                    </tr>
+                                    {% for user in users %}
+                                        <tr>
+                                            <td>{{ user.id }}</td>
+                                            <td>{{ user.name }}</td>
+                                            <td>{{ user.email }}</td>
+                                            <td>{{ user.status }}</td>
+                                            <td>{% for item in user.roles %}
+                                                    {{ item }}
+                                                {% endfor %}
+                                            </td>
+
+                                            <td> <a href= "{{ path ('admin_user_edit',{'id':user.id }) }} " class="btn btn-block btn-primary btn-xs " > Düzenle </td>
+                                            <td> <a href= "{{ path ('admin_user_delete',{'id':user.id})}} " onclick="return confirm('Silinsin mi?');" class="btn btn-block btn-danger btn-xs " > Sil </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

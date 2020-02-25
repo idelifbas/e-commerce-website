@@ -1,0 +1,66 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Kategori Detay{% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="col-sm-9 col-sm-offset-3 col-lg-12 col-lg-offset-0 main">
+        <div class="col-lg-12">
+            <br><h4>
+                <strong class="">Kategori Detay</strong>
+                <small><a href="{{ path('admin_category_new') }}" class="btn btn-info btn-fill pull-right">Kategori ekleme</a> </small>
+            </h4>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-body">
+                        {{ include('admin/category/_delete_form.html.twig') }}
+
+                        <div class="col-md-12">
+                            <table class="table">
+                                <tbody>
+                                <tr>
+                                    <th>Id</th>
+                                    <td>{{ category.id }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Parentid</th>
+                                    <td>{{ category.parentid }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Title</th>
+                                    <td>{{ category.title }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Keywords</th>
+                                    <td>{{ category.keywords }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Description</th>
+                                    <td>{{ category.description }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Status</th>
+                                    <td>{{ category.status }}</td>
+                                </tr>
+                                </tbody>
+
+
+
+
+
+
+                            </table>
+
+                            <a href="{{ path('admin_category_index') }}" class="btn btn-dark">Cancel</a>
+                            <a href="{{ path('admin_category_edit', {'id': category.id}) }}" class="btn btn-primary  pull-right">Edit</a>
+
+                            <div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% endblock %}
+

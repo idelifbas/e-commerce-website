@@ -1,0 +1,65 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Sipariş Listesi{% endblock %}
+
+{% block content %}
+
+    <div class="content">
+    <div class="col-sm-9 col-sm-offset-3 col-lg-12 col-lg-offset-0 main">
+    <div class="col-lg-12">
+        <br><h4>
+            <strong class="">Siparişler</strong>
+
+        </h4>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-body">
+
+
+                    <div class="col-md-12">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Userid</th>
+                                <th>Name</th>
+                                <th>Amount</th>
+                                <th>Address</th>
+                                <th>City</th>
+                                <th>Phone</th>
+                                <th>Status</th>
+                                <th>actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for order in orders %}
+                                <tr>
+                                    <td>{{ order.id }}</td>
+                                    <td>{{ order.userid }}</td>
+                                    <td>{{ order.name }}</td>
+                                    <td>{{ order.amount }}</td>
+                                    <td>{{ order.address }}</td>
+                                    <td>{{ order.city }}</td>
+                                    <td>{{ order.phone }}</td>
+                                    <td>{{ order.status }}</td>
+                                    <td>
+                                        <a href="javascript:openWin(' {{ path('admin_orders_show', {'id': order.id}) }}','','toolbar=no, location=no,status=no,top=100,left=200, menuBar=no,scrollBars=no,resizable=no, width=1000,height=800'); ">Göster</a>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="11">no records found</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+{% endblock %}

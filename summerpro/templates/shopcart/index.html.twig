@@ -1,0 +1,64 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %} Shop Cart {% endblock %}
+
+{% block sidebar %}   {{ include ('home/_usersidebar.html.twig') }}  {% endblock %}
+
+{% block content %}
+    <div class="col-sm-9 padding-right">
+        <div class="product-details"><!--product-details-->
+            <div class="col-sm-7">
+
+                <div id="similar-product" class="carousel slide" data-ride="carousel">
+
+                    <h1>Sepetimdeki Ürünler</h1>
+                    {{ include ('messages.html.twig') }}
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Ürün Adı</th>
+                            <th>Satış Fiyatı</th>
+                            <th>Adet</th>
+                            <th>Toplam</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {%  set total=0 %}
+
+                        {% for shop_cart in shop_carts %}
+                            <tr>
+                                <td>{{ shop_cart.id }}</td>
+                                <td>{{ shop_cart.title }}</td>
+                                <td>{{ shop_cart.sprice }}</td>
+                                <td>{{ shop_cart.quantity }}</td>
+                                <td>{{ shop_cart.quantity *  shop_cart.sprice }}</td>
+                                <td scope="col"><a href="{{ path ('shop_cart_del',{'id':shop_cart.id}) }}" onclick="return confirm('Silinecek emin misin?');" class="btn btn-sm btn-danger" /> Sil</td>
+
+                            </tr>
+                            {%  set total=total+(shop_cart.quantity * shop_cart.sprice) %}
+                        {% else %}
+                            <tr>
+                                <td colspan="5">Alışveriş Sepeti boş</td>
+                            </tr>
+                        {% endfor %}
+                        <tr>
+                            <td>
+                                Toplam Alışveriş Tutarı : {{ total }} ₺
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <a href="{{ path('orders_new') }}" class="btn btn-block btn-success btn-md"> Ürünleri satın al</a>
+
+                </div>
+                <div class="col-sm-7">
+
+                </div>
+            </div>
+        </div><!--/product-details-->
+    </div>
+    <div class="row"></div>
+{% endblock %}

@@ -1,0 +1,96 @@
+<section id="slider"><!--slider-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div id="slider-carousel" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        {% set j=1 %}
+                        {% for rs in sliders %}
+                            <li data-target="#slider-carousel" data-slide-to="{{ j }}" {% if j==1 %}class="active"{% endif %} ></li>
+                            {% set j=j+1 %}
+                        {% endfor %}
+                    </ol>
+
+                    {% set i=0 %}
+                    {% for rs in sliders %}
+                        {% set i=i+1 %}
+                        <div class="item {% if i==1 %}active"{% endif %}>
+                            <div class="col-sm-6">
+                                <h1><span>E</span>{{ rs.title }}</h1>
+                                <h2>{{ rs.title }}</h2>
+                                <p>{{ rs.description }}</p>
+                                <button href="{{ path('shop_cart_index') }}" type="button" class="btn btn-default get">Hemen Satın Al</button>
+                            </div>
+                            <div class="col-sm-6">
+
+                                <img src="{{ asset('uploads') }}/images/{{ rs.image }}" height="300" width="200" style="width:40% ">
+                                <img src="{{ asset('assets') }}/images/home/pricing.png"  class="pricing" alt="" />
+
+                            </div>{% endfor %}
+
+                        </div>
+
+
+                </div>
+                <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
+    </div>
+</section><!--/slider-->
+
+<section id="slider"><!--slider-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div id="slider-carousel" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        {% set i=0 %}
+                        {% for rs in sliders %}
+                            <li data-target="#slider-carousel" data-slide-to="{{i}}" {% if i==1 %} class="active" {% endif %}></li>
+                            {%  set i=i+1 %}
+                        {% endfor %}
+                    </ol>
+
+                    <div class="carousel-inner">
+                        {% set i=0 %}
+                        {% for rs in sliders %}
+                        {%  set i=i+1 %}
+                        <div class="item{% if i==1 %} active" {% endif %}">
+                        <div class="col-sm-6">
+                            <h1><span>{{rs.title}}</span></h1>
+                            <h2>{{rs.title}}</h2>
+                            <p>{{rs.description}} </p>
+
+                        </div>
+                        <div class="col-sm-6">
+                            <a href="{{ path("product_detail", {'id': rs.id} ) }}" >
+                                <img src="{{ asset('uploads') }}/images/{{ rs.image }}" class="girl img-responsive" alt="" /></a>
+
+                        </div>
+                    </div>
+
+                    {% endfor %}
+
+
+
+                </div>
+
+                <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
+    </div>
+</section><!--/slider-->

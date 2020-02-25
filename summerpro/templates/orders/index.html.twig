@@ -1,0 +1,56 @@
+{% extends 'frontbase.html.twig' %}
+{% block sidebar %}   {{ include ('home/_usersidebar.html.twig') }}  {% endblock %}
+{% block title %}Orders list{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="col-sm-10 col-sm-offset-0 col-lg-12 col-lg-offset-0 main">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+
+                        <h1>Siparişlerin Listesi</h1>
+
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Amount</th>
+                                <th>City</th>
+                                <th>Phone</th>
+                                <th>Shipinfo</th>
+                                <th>Status</th>
+                                <th>Note</th>
+                                <th>actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for order in orders %}
+                                <tr>
+                                    <td>{{ order.name }}</td>
+                                    <td>{{ order.amount }} ₺</td>
+                                    <td>{{ order.city }}</td>
+                                    <td>{{ order.phone }}</td>
+                                    <td>{{ order.shipinfo }}</td>
+                                    <td>{{ order.status }}</td>
+                                    <td>{{ order.note }}</td>
+                                    <td>
+                                        <a href="{{ path('orders_show', {'id': order.id}) }}">show</a>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="11">no records found</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+
+                        <a href="{{ path('orders_new') }}">Create new</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

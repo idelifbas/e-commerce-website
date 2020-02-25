@@ -1,0 +1,77 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Üye Ekleme{% endblock %}
+
+{% block content %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="panel-body">
+
+                <div class="box box-info">
+
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Yeni Üye Ekleme</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <form class="form-horizontal" method="post">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Adı Soyadı</label>
+
+                                <div class="col-sm-10">
+                                    <input type="text" name="users[name]" class="form-control" id="inputEmail3" placeholder="Adı Soyadı">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+
+                                <div class="col-sm-10">
+                                    <input type="email" name="users[email]" class="form-control" id="inputEmail3" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+
+                                <div class="col-sm-10">
+                                    <input type="password" name="users[password]" class="form-control" id="inputPassword3" placeholder="Password">
+                                    <br>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-2 control-label">Türü</label>
+
+                                <div class="col-sm-5">
+                                    <select name="users[type]" class="form-control">
+                                        <option>Admin</option>
+                                        <option>Uye</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-2 control-label">Aktif Durumu</label>
+
+                                <div class="col-sm-5">
+                                    <select name="users[status]" class="form-control">
+                                        <option>True</option>
+                                        <option>False</option></select>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+
+                <!-- /.box-body -->
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-right">Cancel</button>
+                    <button type="submit" class="btn btn-info pull-right">Kaydet</button>
+                </div>
+                <!-- /.box-footer -->
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+
+{% endblock %}

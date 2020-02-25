@@ -1,0 +1,98 @@
+{% extends 'frontbase.html.twig' %}
+{% block sidebar %}   {{ include ('home/_usersidebar.html.twig') }}  {% endblock %}
+
+{% block title %}Orders{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="col-sm-10 col-sm-offset-0 col-lg-12 col-lg-offset-0 main">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h1>Sipariş Detay</h1>
+
+                        <table class="table">
+                            <thead>
+                            <tbody>
+
+                            <tr>
+                                <th>Userid</th>
+                                <td>{{ order.userid }}</td>
+                            </tr>
+                            <tr>
+                                <th>Amount</th>
+                                <td>{{ order.amount }}</td>
+                            </tr>
+                            <tr>
+                                <th>Name</th>
+                                <td>{{ order.name }}</td>
+                            </tr>
+                            <tr>
+                                <th>Address</th>
+                                <td>{{ order.address }}</td>
+                            </tr>
+                            <tr>
+                                <th>City</th>
+                                <td>{{ order.city }}</td>
+                            </tr>
+                            <tr>
+                                <th>Phone</th>
+                                <td>{{ order.phone }}</td>
+                            </tr>
+                            <tr>
+                                <th>Shipinfo</th>
+                                <td>{{ order.shipinfo }}</td>
+                            </tr>
+                            <tr>
+                                <th>Status</th>
+                                <td>{{ order.status }}</td>
+                            </tr>
+                            <tr>
+                                <th>Note</th>
+                                <td>{{ order.note }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <table class="table">
+                            <thead>
+                            <tbody>
+                            <tr>
+                                <th>Id</th>
+                                <th>Ürün Adı</th>
+                                <th>Satış Fiyatı</th>
+                                <th>Adet</th>
+                                <th>Toplam</th>
+                                <th>Durum</th>
+                            </tr>
+                            </thead>
+                            {% set total=0%}
+                            {% for rs in orderdetail %}
+                                <tr>
+                                    <td> {{ rs.id }}</td>
+                                    <td> {{ rs.name }}</td>
+                                    <td> {{ rs.price }}</td>
+                                    <td> {{ rs.quantity }}</td>
+                                    <td> {{ rs.amount }}</td>
+                                    <td> {{ rs.status }}</td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="6">Sipariş Detay</td>
+                                </tr>
+                            {% endfor %}
+
+                            <tr>
+                                <td colspan="6">
+                                    Toplam Alışveriş Tutarı: {{ order.amount }} ₺
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,70 @@
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="col-sm-10 col-sm-offset-3 col-lg-12 col-lg-offset-0 main">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form action="#" method="post" class="" action="{{ path('orders_new') }}">
+
+                            <div class="row form-group">
+                                <div class="col col-md-12"><label for="hf-title" class=" form-control-label">Ödenecek tutar</label></div>
+                                <div class="col-10 col-md-12"><input type="text"  value="{{ total }}" name="orders[amount]" class="form-control"></div>
+                            </div>
+
+                            <hr>
+                            ------- Kargo Alıcı Bilgileri--------
+                            <hr>
+                            <div class="row form-group">
+                                <div class="col col-md-12"><label for="hf-keywords" class=" form-control-label">Adı-Soyadı</label></div>
+                                <div class="col-10 col-md-12"><input type="text"  value="{{ app.user.name }}" name="orders[name]" placeholder="Adı-Soyadı..." class="form-control"></div>
+                            </div>
+
+                            <div class="row form-group">
+                                <div class="col col-md-12"><label for="hf-description" class=" form-control-label">Adres</label></div>
+                                <div class="col-10 col-md-12"><input type="text"  value="{{ app.user.address }}" name="orders[address]" placeholder="Adres..." class="form-control"></div>
+                            </div>
+
+                            <div class="row form-group">
+                                <div class="col col-md-12"><label for="hf-alisfiyati" class=" form-control-label">Şehir</label></div>
+                                <div class="col-10 col-md-12"><input type="text"  value="{{ app.user.city }}" name="orders[city]" placeholder="Şehir..." class="form-control"></div>
+                            </div>
+
+                            <div class="row form-group">
+                                <div class="col col-md-12"><label for="hf-satisfiyati" class=" form-control-label">Telefon</label></div>
+                                <div class="col-10 col-md-12"><input type="text"  value="{{ app.user.phone }}" name="orders[phone]" placeholder="Telefon..." class="form-control"></div>
+                            </div>
+
+                            <hr>
+                            ------- Kredi Kartı Bilgileri--------
+                            <hr>
+                            <div class="row form-group">
+                                <div class="col col-md-12"><label for="hf-amount" class=" form-control-label">Adı-Soyadı</label></div>
+                                <div class="col-10 col-md-12"><input type="text"  placeholder="Kart adı soyadı..." class="form-control"></div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-12"><label for="hf-amount" class=" form-control-label">Kart Numarası</label></div>
+                                <div class="col-10 col-md-12"><input type="text"  placeholder="Kart numarası..." class="form-control"></div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-12"><label for="hf-amount" class=" form-control-label">Son Kullanma Tarihi</label></div>
+                                <div class="col-10 col-md-12"><input type="text"  placeholder="Ay/Yıl..." class="form-control"></div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-12"><label for="hf-amount" class=" form-control-label">Güvenlik Kodu</label></div>
+                                <div class="col-10 col-md-12"><input type="text"  placeholder="Güvenlik Kodu..." class="form-control"></div>
+                            </div>
+
+                            <input type="hidden" name="token" value="{{ csrf_token('form-order') }}" />
+                            <button type="submit" class="btn btn-primary btn-sm" >
+                                <i class="fa fa-dot-circle-o"></i> Satın Al
+                            </button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

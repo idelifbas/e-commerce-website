@@ -1,0 +1,118 @@
+{{ include('admin/messages.html.twig') }}
+
+
+<form action="#" method="post" class="form-horizontal" name="">
+    <div class="panel-body tabs">
+        <ul class="nav nav-pills">
+            <li class="active"><a href="#pilltab1" data-toggle="tab">Genel Bilgiler</a></li>
+            <li><a href="#pilltab2" data-toggle="tab">Email Server</a></li>
+            <li><a href="#pilltab3" data-toggle="tab">Hakkımızda</a></li>
+            <li><a href="#pilltab4" data-toggle="tab">İletişim</a></li>
+            <li><a href="#pilltab5" data-toggle="tab">Referanslar</a></li>
+        </ul>
+        <div class="tab-content">
+
+            <div class="tab-pane fade in active" id="pilltab1">
+                <div class="row form-group">
+                    <div class="col col-md-14"><label class=" form-control-label">Adı</label></div>
+                    <div class="col-10 col-md-14"><input type="text"  value="{{ setting.title}}" name="setting[title]" placeholder="Adı..." class="form-control"></div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col col-md-14"><label class=" form-control-label">Anahtar Kelimeler</label></div>
+                    <div class="col-10 col-md-14"><input type="text"  value="{{ setting.keywords}}" name="setting[keywords]" placeholder="Anahtar Kelimeler..." class="form-control"></div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col col-md-14"><label class=" form-control-label">Kısa Açıklama</label></div>
+                    <div class="col-10 col-md-14"><input type="text"  value="{{ setting.description}}" name="setting[description]" placeholder="Kısa Açıklama..." class="form-control"></div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col col-md-14"><label class=" form-control-label">Firma Adı</label></div>
+                    <div class="col-10 col-md-14"><input type="text"  value="{{ setting.company}}" name="setting[company]" placeholder="Firma Adı..." class="form-control"></div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-14"><label class=" form-control-label">Adres</label></div>
+                    <div class="col-10 col-md-14"><input  type="text"  value="{{ setting.address}}" name="setting[address]" placeholder="Adres..." class="form-control"> </input> </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-14"><label class=" form-control-label">Fax</label></div>
+                    <div class="col-10 col-md-14"><input  type="text"  value="{{ setting.fax}}" name="setting[fax]" placeholder="Fax..." class="form-control"> </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-14"><label class=" form-control-label">Telefon</label></div>
+                    <div class="col-10 col-md-14"><input  type="text"  value="{{ setting.phone}}" name="setting[phone]" placeholder="Fax..." class="form-control"> </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-14"><label class=" form-control-label">Durum</label></div>
+                    <div class="col-10 col-md-14">
+                        <select name="setting[status]" class="form-control">
+                            <option>{{ setting.status}}  </option>
+                            <option selected>Aktif </option>
+                            <option>Aktif değil </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="pilltab2">
+                <div class="row form-group">
+                    <div class="col col-md-14"><label class=" form-control-label">Email Server</label></div>
+                    <div class="col-10 col-md-14"><input type="text"  value="{{ setting.smtpserver}}" name="setting[smtpserver]" placeholder="Email Server..." class="form-control"></div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col col-md-14"><label class=" form-control-label">Email</label></div>
+                    <div class="col-10 col-md-14"><input type="text"  value="{{ setting.smtpemail}}" name="setting[smtpemail]" placeholder="Email..." class="form-control"></div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-14"><label class=" form-control-label">Email Şifre</label></div>
+                    <div class="col-10 col-md-14"><input  type="text"  value="{{ setting.smtppassword}}" name="setting[smtppassword]" placeholder="Email Şifre..." class="form-control"> </input> </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-14"><label class=" form-control-label">Port</label></div>
+                    <div class="col-10 col-md-14"><input  type="text"  value="{{ setting.smtpport}}"  name="setting[smtpport]" placeholder="Port..." class="form-control"> </input> </div>
+                </div>
+            </div>
+
+
+            <div class="tab-pane fade" id="pilltab3">
+                <div class="row form-group">
+                    <div class=""><label for="hf-detail" class=" form-control-label">Hakkımızda</label></div>
+                    <div class=""><textarea  id="aboutus"  name="setting[aboutus]" class="form-control"> {{ setting.aboutus}} </textarea> </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="pilltab4">
+                <div class="row form-group">
+                    <div class=""><label for="hf-detail" class=" form-control-label">İletişim</label></div>
+                    <div class=""><textarea  id="contact" name="setting[contact]" class="form-control"> {{ setting.contact}} </textarea> </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="pilltab5">
+                <div class="row form-group">
+                    <div class=""><label for="hf-detail" class=" form-control-label">Referans</label></div>
+                    <div class=""><textarea  id="reference"  name="setting[reference]" class="form-control"> {{ setting.reference}} </textarea> </div>
+                </div>
+            </div>
+
+
+            <button type="submit" class="btn btn-primary btn-sm" >
+                Kaydet
+            </button>
+            <button type="reset" class="btn btn-danger btn-sm">
+                <i class="fa fa-ban"></i> Reset
+            </button>
+
+        </div>
+    </div>
+</form>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#aboutus' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
