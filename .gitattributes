@@ -1,2 +1,3 @@
 *.html linguist-detectable=false
 *.css linguist-detectable=false
+*.php linguist-language=Php
